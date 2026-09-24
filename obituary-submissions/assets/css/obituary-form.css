@@ -1,0 +1,265 @@
+/* ============================================================
+   Obituary Submissions – Frontend Form Styles
+   ============================================================ */
+
+.obituary-form-wrap {
+	max-width: 720px;
+	margin: 0 auto;
+	font-family: inherit;
+}
+
+.obituary-login-required {
+	padding: 24px;
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.obituary-notice {
+	padding: 16px 20px;
+	background: #fff8e5;
+	border-left: 4px solid #f0b429;
+	border-radius: 0 4px 4px 0;
+}
+
+.obituary-price-notice {
+	display: inline-block;
+	background: #eef7ee;
+	border: 1px solid #b8ddb8;
+	border-radius: 4px;
+	padding: 10px 16px;
+	margin-bottom: 28px;
+	font-size: 1em;
+	color: #2e6b2e;
+	font-weight: 600;
+}
+
+/* ---- Validation errors ---- */
+.obituary-errors {
+	background: #fef0f0;
+	border: 1px solid #f5c2c7;
+	border-radius: 4px;
+	padding: 14px 20px;
+	margin-bottom: 24px;
+	color: #842029;
+}
+.obituary-errors ul { margin: 0; padding: 0 0 0 18px; }
+.obituary-errors li { margin: 4px 0; font-size: 0.93em; }
+
+/* ---- Fields ---- */
+.obituary-field { margin-bottom: 22px; }
+
+.obituary-field label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 6px;
+	color: #222;
+	font-size: 0.97em;
+}
+.obituary-field label .required { color: #c0392b; margin-left: 3px; }
+.obituary-field label .optional { font-weight: 400; color: #777; font-size: 0.88em; margin-left: 4px; }
+
+.obituary-field input[type="text"],
+.obituary-field input[type="date"],
+.obituary-field input[type="url"],
+.obituary-field textarea {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1em;
+	font-family: inherit;
+	color: #333;
+	background: #fff;
+	box-sizing: border-box;
+	transition: border-color 0.15s, box-shadow 0.15s;
+	-webkit-appearance: none;
+}
+.obituary-field input[type="text"]:focus,
+.obituary-field input[type="date"]:focus,
+.obituary-field input[type="url"]:focus,
+.obituary-field textarea:focus {
+	outline: none;
+	border-color: #0073aa;
+	box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.12);
+}
+.obituary-field textarea { resize: vertical; min-height: 200px; line-height: 1.6; }
+.obituary-field input[type="file"] { display: block; width: 100%; padding: 8px 0; font-size: 0.95em; color: #444; cursor: pointer; }
+.obituary-field .description { margin: 6px 0 0; font-size: 0.85em; color: #666; }
+
+.obituary-field.has-error input,
+.obituary-field.has-error textarea { border-color: #c0392b; }
+.obituary-field-error { display: block; color: #c0392b; font-size: 0.87em; margin-top: 5px; }
+
+/* ---- Featured image preview ---- */
+.obituary-preview-single { margin-top: 10px; }
+.obituary-preview-single img {
+	max-width: 200px;
+	max-height: 200px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	object-fit: cover;
+	display: block;
+}
+
+/* ---- Gallery preview grid ---- */
+.obituary-preview-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.obituary-preview-item {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border-radius: 4px;
+	overflow: hidden;
+	border: 2px solid #ddd;
+	background: #f4f4f4;
+	cursor: grab;
+	transition: border-color 0.15s, box-shadow 0.15s, opacity 0.15s;
+	user-select: none;
+}
+.obituary-preview-item:active { cursor: grabbing; }
+
+/* Dragging state — the tile being moved */
+.obituary-preview-item.is-dragging {
+	opacity: 0.4;
+	box-shadow: none;
+}
+
+/* Drop target highlight */
+.obituary-preview-item.drag-over {
+	border-color: #0073aa;
+	box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.25);
+}
+
+.obituary-preview-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	pointer-events: none;
+}
+
+/* Drag handle — six-dot grip shown at top-left */
+.obituary-drag-handle {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 16px;
+	height: 16px;
+	background-image: radial-gradient(circle, rgba(255,255,255,0.9) 1.5px, transparent 1.5px);
+	background-size: 5px 5px;
+	background-position: 0 0, 5px 5px;
+	opacity: 0;
+	transition: opacity 0.15s;
+	pointer-events: none;
+	z-index: 2;
+}
+.obituary-preview-item:hover .obituary-drag-handle { opacity: 1; }
+
+/* Remove button */
+.obituary-preview-remove {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	width: 22px;
+	height: 22px;
+	background: rgba(0, 0, 0, 0.65);
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 22px;
+	text-align: center;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.15s;
+	z-index: 3;
+}
+.obituary-preview-remove:hover { background: rgba(180, 0, 0, 0.85); }
+.obituary-preview-remove::before { content: '×'; }
+
+/* Gallery counter */
+.obituary-gallery-counter { font-size: 0.85em; color: #555; margin-top: 6px; }
+.obituary-gallery-counter.at-limit { color: #c0392b; font-weight: 600; }
+
+/* ---- Submit area ---- */
+.obituary-submit-wrap {
+	margin-top: 32px;
+	padding-top: 24px;
+	border-top: 1px solid #eee;
+}
+
+/* Processing message — hidden until form submits */
+.obituary-processing {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 14px;
+	font-size: 0.95em;
+	color: #555;
+}
+.obituary-processing::before {
+	content: '';
+	flex-shrink: 0;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border: 2px solid #ccc;
+	border-top-color: #0073aa;
+	border-radius: 50%;
+	animation: obituary-spin 0.7s linear infinite;
+}
+
+.obituary-submit-note { font-size: 0.87em; color: #666; margin-top: 12px; }
+
+/* ---- Buttons ---- */
+.obituary-btn {
+	display: inline-block;
+	padding: 12px 28px;
+	border-radius: 4px;
+	font-size: 1em;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	border: 2px solid transparent;
+	transition: background 0.15s, border-color 0.15s, color 0.15s;
+	font-family: inherit;
+}
+.obituary-btn-primary { background: #0073aa; color: #fff; border-color: #0073aa; }
+.obituary-btn-primary:hover,
+.obituary-btn-primary:focus { background: #005f8d; border-color: #005f8d; outline: none; }
+.obituary-btn-primary:disabled,
+.obituary-btn-primary.is-loading { background: #7dbad5; border-color: #7dbad5; cursor: not-allowed; }
+
+/* Spinner appended to the button text when loading */
+.obituary-btn.is-loading::after {
+	content: '';
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	border: 2px solid rgba(255, 255, 255, 0.45);
+	border-top-color: #fff;
+	border-radius: 50%;
+	margin-left: 10px;
+	vertical-align: middle;
+	animation: obituary-spin 0.7s linear infinite;
+}
+
+@keyframes obituary-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+	.obituary-preview-item { width: 80px; height: 80px; }
+	.obituary-btn { width: 100%; text-align: center; }
+}
